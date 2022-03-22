@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!----------------------------------adding c.css to design the claculator------------------------------->
+    <link rel="stylesheet" href="c.css">
+    <title>calculator</title>
+</head>
+<body>
+    <div class="calc">
+        <h1>Calculator</h1>
+
+        <div class="cal">
+<!--------------------------------------screen of calculator------------------------------------------------>
+        <input type="text" name="screen" id="screen" placeholder="0">
+<!---------------------------------------buttons of calculator----------------------------------------->        
+        <table>
+            <tr>
+                <td><button>9</button></td>
+                <td><button>8</button></td>
+                <td><button>7</button></td>
+                <td><button>+</button></td>
+            </tr>
+            <tr>
+                <td><button>6</button></td>
+                <td><button>5</button></td>
+                <td><button>4</button></td>
+                <td><button>-</button></td>
+            </tr>
+            <tr>
+                <td><button>3</button></td>
+                <td><button>2</button></td>
+                <td><button>1</button></td>
+                <td><button>X</button></td>
+            </tr>
+            <tr>
+                <td><button>0</button></td>
+                <td><button>.</button></td>
+                <td><button>=</button></td>
+                <td><button>/</button></td>
+            </tr>
+            <tr>
+                <td><button>00</button></td>
+                <td><button>(</button></td>
+                <td><button>)</button></td>
+                <td><button>C</button></td>
+            </tr>
+
+        </table>
+    </div>
+    </div>
+<!---------------------------------------java script to make calculator fuctional----------------------------------->
+<script>
+    let screen=document.getElementById("screen");
+    buttons=document.querySelectorAll('button');
+    let screenValue = '';
+    for(item of buttons)
+    {
+        item.addEventListener('click',(e)=>{
+            buttonText = e.target.innerText ;
+            //X==mutliply
+            if(buttonText=='X'){
+                buttonText="*";
+                screenValue += buttonText;
+                screen.value=screenValue;
+            }
+            //to clear screen 
+            else if(buttonText=='C'){
+                screenValue = " ";
+                screen.value = screenValue;
+
+            }
+            //evaluate the expression
+            else if(buttonText=='='){
+                screen.value=eval(screenValue);
+            }
+            //add digits as a string
+            else{
+                screenValue += buttonText;
+                screen.value = screenValue;   
+            }
+        })
+    }
+</script>   
+</body>
+</html>
